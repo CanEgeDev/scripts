@@ -1221,35 +1221,6 @@ game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Player.Pets
 end
 end)
 
-local function deletePets()
-
-	_G.dpetTarget = nil
-
-    for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Client.Pets:GetChildren())do
-
-        local args = {
-            [1] = {
-                [1] = {
-                    [1] = _G.dpetTarget
-                }
-            }
-        }
-
-        if v:IsA("TextButton") then
-            if unabbreviate(v:FindFirstChild("Level").Text) <= "10000" then
-                _G.dpetTarget = v.Name
-                workspace.__THINGS.__REMOTES["delete several pets"]:InvokeServer(unpack(args))
-				if _G.consolelog == true then
-					rconsoleinfo("Inventory is full deleting useless pets!")
-				end
-				if _G.webhooklog == true then
-					sendWHMessage("Inventory is full! Deleting useless pets...")
-				end
-            end
-        end
-    end
-end
-
 game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc:GetPropertyChangedSignal("Text"):Connect(function()
 	if string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),"declined") then
 		for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Client.Pets:GetChildren())do
@@ -1323,18 +1294,7 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc:GetPropertyC
 		end
 		--game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Visible = false
 	end
-
-	if string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),"Your inventory is full!") then
-		deletePets()
-	end
-
-	if string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),game.Players.LocalPlayer.Name) and string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),"is full") then
-		_G.status.Text = "Inventory is full..."
-		_G.status.Text = "Deleting useless pets!"
-		deletePets()
-		wait(0.5)
-		_G.status.Text = "CanEge's Pet Simulator X Auto Trade Bot"
-	end
+	
 end)
 
 -- Anti AFK from infinite yield
