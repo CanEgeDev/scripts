@@ -1098,7 +1098,7 @@ local function removePet(petname,petfolder)
 					end
 					workspace.__THINGS.__REMOTES["remove trade pet"]:InvokeServer(unpack(args))
 					_G.status.Text = "Removing pet(s)..."
-					wait(0.1)
+					wait(0.3)
 					_G.status.Text = getLocalValue().."  /  "..getOpponentsValue()
 					wait(0.2)
 					_G.status.Text = "CanEge's Pet Simulator X Auto Trade Bot"
@@ -1125,7 +1125,7 @@ mt.__namecall = function(self,...)
 			_G.status.Text = "Getting Trade ID..."
 			wait(0.2)
 			_G.status.Text = _G.tradeid
-			wait(0.2)
+			wait(0.3)
 			_G.status.Text = "CanEge's Pet Simulator X Auto Trade Bot"
 			firstt = true
 		end
@@ -1165,7 +1165,7 @@ local function addPet(petname, petfolder)
 					Folder2.Parent = v2
 					workspace.__THINGS.__REMOTES["add trade pet"]:InvokeServer(unpack(args))
 					_G.status.Text = "Adding a pet..."
-					wait(0.1)
+					wait(0.2)
 					_G.status.Text = getLocalValue().."  /  "..getOpponentsValue()
 					wait(0.2)
 					_G.status.Text = "CanEge's Pet Simulator X Auto Trade Bot"
@@ -1307,7 +1307,7 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc:GetPropertyC
 		if _G.autotrade == true then
 			_G.status.Text = "Sending trade"
 			getTarget()
-			wait(0.1)
+			wait(0.2)
 			_G.status.Text = "CanEge's Pet Simulator X Auto Trade Bot"
 		end
 		--game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Visible = false
@@ -1335,7 +1335,7 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc:GetPropertyC
 		if _G.autotrade == true then
 			_G.status.Text = "Sending trade"
 			getTarget()
-			wait(0.1)
+			wait(0.2)
 			_G.status.Text = "CanEge's Pet Simulator X Auto Trade Bot"
 		end
 		--game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Visible = false
@@ -1349,7 +1349,7 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc:GetPropertyC
 		_G.status.Text = "Inventory is full..."
 		_G.status.Text = "Deleting useless pets!"
 		deletePets()
-		wait(0.1)
+		wait(0.5)
 		_G.status.Text = "CanEge's Pet Simulator X Auto Trade Bot"
 	end
 end)
