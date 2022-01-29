@@ -1183,7 +1183,9 @@ game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Player.Pets
 	end
 
 	if _G.freepetmode then
-        ready()
+		if checkStats == true then
+			ready()
+		end
     end
 
     if item:IsA("TextButton") then
