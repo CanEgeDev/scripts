@@ -1245,15 +1245,6 @@ local function deletePets()
 				if _G.webhooklog == true then
 					sendWHMessage("Inventory is full! Deleting useless pets...")
 				end
-            elseif not string.find(v.Level.Text, "b") and not string.find(v.Level.Text, "m") and string.find(v.Level.Text, "k") then
-                _G.dpetTarget = v.Name
-                workspace.__THINGS.__REMOTES["delete several pets"]:InvokeServer(unpack(args))
-				if _G.consolelog == true then
-					rconsoleinfo("Inventory is full deleting useless pets!")
-				end
-				if _G.webhooklog == true then
-					sendWHMessage("Inventory is full! Deleting useless pets...")
-				end
             end
         end
     end
