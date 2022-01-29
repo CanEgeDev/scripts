@@ -1341,8 +1341,8 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc:GetPropertyC
 		--game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Visible = false
 	end
 
-	if string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),"your trade") and string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),"was ignored") then
-		--game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Visible = false
+	if string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),"Your inventory is full") then
+		deletePets()
 	end
 
 	if string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),game.Players.LocalPlayer.Name) and string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),"is full") then
