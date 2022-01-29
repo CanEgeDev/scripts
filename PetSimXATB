@@ -827,13 +827,11 @@ local function tpserver()
 		ts:Teleport(game.PlaceId, game.Players.LocalPlayer)
 		print("zaaa")
 	end
-	print("ayo")
 end
 
 game:GetService("RunService").RenderStepped:Connect(function()
 	wait(5)
 	if _G.trading == false and _G.autotrade == true then
-		print("shit")
 		getTarget()
 	end
 	wait(55)
@@ -1137,8 +1135,6 @@ end
 local function checkStats()
 
 	if ""..getLocalValue() <= ""..getOpponentsValue() then
-        print(getLocalValue())
-        print(getOpponentsValue())
 		return true
 	else
 		return false
@@ -1182,12 +1178,6 @@ game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Player.Pets
 		Folder.Parent = workspace:FindFirstChild("Handler")
 	end
 
-	if _G.freepetmode then
-		if checkStats == true then
-			ready()
-		end
-    end
-
     if item:IsA("TextButton") then
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Client.Pets:GetChildren())do
             if v:IsA("TextButton") and v:FindFirstChild("Equipped").Visible == false and unabbreviate(v:FindFirstChild("Level").Text) + getLocalValue() <= getOpponentsValue() and not v:FindFirstChild("eq")  then
@@ -1195,7 +1185,9 @@ game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Player.Pets
 					addPet(v.Name,item)
 				end
 				if _G.freepetmode == true and _G.usemaxval == true or false then
-					ready()
+					if checkStats() == true then
+						ready()
+					end
 				end
 				if _G.freepetmode == false and _G.usemaxval == true then
 					if unabbreviate(v:FindFirstChild("Level").Text) <= unabbreviate(_G.maxval.Text) then
