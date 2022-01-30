@@ -812,26 +812,31 @@ local function sendTrade(target)
     workspace.__THINGS.__REMOTES["send trade invite"]:InvokeServer(unpack(args))
 end
 
+local function tpserver()
+	local ts = game:GetService("TeleportService")
+	if _G.allowbottp == true then
+		_G.status = "Teleporting"
+		ts:Teleport(game.PlaceId, game.Players.LocalPlayer)
+		print("zaaa")
+	end
+end
+
 local function getTarget()
+	if table.maxn(blocklist) >= 4 then
+		tpserver()
+	end
+
 	for i,v in pairs(game.Players:GetPlayers())do
-		if not table.find(blocklist,v.Name) then
+		if not table.find(blocklist,v.DisplayName) then
 			game:GetService("Players").LocalPlayer.PlayerGui.Trading.Enabled = true
 			sendTrade(v.Name)
 		end
 	end
 end
 
-local function tpserver()
-	local ts = game:GetService("TeleportService")
-	if _G.allowbottp == true then
-		ts:Teleport(game.PlaceId, game.Players.LocalPlayer)
-		print("zaaa")
-	end
-end
-
 game:GetService("RunService").RenderStepped:Connect(function()
 	wait(5)
-	if _G.trading == false and _G.autotrade == true then
+	if _G.autotrade == true and _G.trading == false then
 		getTarget()
 	end
 	wait(55)
@@ -839,7 +844,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
 		tpserver()
 	elseif _G.tradecount <= _G.tpval and _G.trading == true then
 		wait(10)
-		if _G.trading == false and _G.tradecount <= _G.tpval then
+		if _G.tradecount <= _G.tpval then
 			tpserver()
 		end
 	elseif _G.tradecount > _G.tpval then
@@ -1151,7 +1156,7 @@ local function addPet(petname, petfolder)
     }
     
 	for _,v2 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Client.Pets:GetChildren())do
-		if v2.Name == petname and v2.Equipped.Visible == false and unabbreviate(v2:FindFirstChild("Level").Text) + getLocalValue() <= getOpponentsValue() and not v2:FindFirstChild("eq") and _G.autotrade == true then
+		if v2.Name == petname and v2.Equipped.Visible == false and unabbreviate(v2:FindFirstChild("Level").Text) + getLocalValue() <= getOpponentsValue() and not v2:FindFirstChild("eq") and _G.autotrade == true and _G.freepetmode == false and _G.usemaxval == false then
 			if workspace:FindFirstChild("Handler"):FindFirstChild(petfolder.Name) then
 					local Folder = Instance.new("Folder")
 					Folder.Name = v2.Name
@@ -1166,6 +1171,21 @@ local function addPet(petname, petfolder)
 					wait(0.2)
 					_G.status.Text = "CanEge's Pet Simulator X Auto Trade Bot"
 			end
+		elseif v2.Name == petname and v2.Equipped.Visible == false and unabbreviate(v2:FindFirstChild("Level").Text) + getLocalValue() <= getOpponentsValue() and not v2:FindFirstChild("eq") and _G.autotrade == true and _G.freepetmode == false and _G.usemaxval == true and unabbreviate(v2:FindFirstChild("Level").Text) <= unabbreviate(_G.maxval.Text) then
+			if workspace:FindFirstChild("Handler"):FindFirstChild(petfolder.Name) then
+				local Folder = Instance.new("Folder")
+				Folder.Name = v2.Name
+				Folder.Parent = workspace:FindFirstChild("Handler"):FindFirstChild(petfolder.Name)
+				local Folder2 = Instance.new("Folder")
+				Folder2.Name = "eq"
+				Folder2.Parent = v2
+				workspace.__THINGS.__REMOTES["add trade pet"]:InvokeServer(unpack(args))
+				_G.status.Text = "Adding a pet..."
+				wait(0.2)
+				_G.status.Text = getLocalValue().."  /  "..getOpponentsValue()
+				wait(0.2)
+				_G.status.Text = "CanEge's Pet Simulator X Auto Trade Bot"
+		end
 		end
 	end
 end
@@ -1181,19 +1201,8 @@ game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Player.Pets
     if item:IsA("TextButton") then
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Client.Pets:GetChildren())do
             if v:IsA("TextButton") and v:FindFirstChild("Equipped").Visible == false and unabbreviate(v:FindFirstChild("Level").Text) + getLocalValue() <= getOpponentsValue() and not v:FindFirstChild("eq")  then
-				if _G.freepetmode == false and _G.usemaxval == false then
-					addPet(v.Name,item)
-				end
-				if _G.freepetmode == true and _G.usemaxval == true or false then
-					if checkStats() == true then
-						ready()
-					end
-				end
-				if _G.freepetmode == false and _G.usemaxval == true then
-					if unabbreviate(v:FindFirstChild("Level").Text) <= unabbreviate(_G.maxval.Text) then
-						addPet(v.Name,item)
-					end
-				end
+				wait(0.1)
+				addPet(v.Name,item)
             end
         end
     end
@@ -1222,7 +1231,8 @@ end
 end)
 
 game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc:GetPropertyChangedSignal("Text"):Connect(function()
-	if string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),"declined") then
+	local a = game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text
+	if string.find(string.lower(a),"declined") then
 		for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Client.Pets:GetChildren())do
 			if v:FindFirstChild("eq") then
 				v:FindFirstChild("eq"):Destroy()
@@ -1235,7 +1245,7 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc:GetPropertyC
 		end
 	end
 
-	if string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),"trade successfully completed") then
+	if string.find(string.lower(a),"trade successfully completed") then
 		for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Client.Pets:GetChildren())do
 			if v:FindFirstChild("eq") then
 				v:FindFirstChild("eq"):Destroy()
@@ -1267,7 +1277,11 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc:GetPropertyC
 		--game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Visible = false
 	end
 
-	if string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),"your trade") and string.find(string.lower(game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc.Text),"was cancelled") then
+	if string.find(string.lower(a),"your trade") and string.find(string.lower(a),"was ignored") then
+		--game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Visible = false
+	end
+
+	if string.find(string.lower(a),"your trade") and string.find(string.lower(a),"was cancelled") then
 		for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Client.Pets:GetChildren())do
 			if v:FindFirstChild("eq") then
 				v:FindFirstChild("eq"):Destroy()
@@ -1283,6 +1297,8 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc:GetPropertyC
 			sendWHMessage("Trade was cancelled!")
 		end
 
+		--table.insert(blocklist,game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Player.Title.Text)
+
 		_G.trading = false
 		wait(0.1)
 		firstt = false
@@ -1294,8 +1310,9 @@ game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Desc:GetPropertyC
 		end
 		--game:GetService("Players").LocalPlayer.PlayerGui.Message.Frame.Visible = false
 	end
-	
+
 end)
+
 
 -- Anti AFK from infinite yield
 local GC = getconnections or get_signal_cons
