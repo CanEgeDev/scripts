@@ -2,6 +2,7 @@
 -- Pet Simulator X Auto Trade Bot
 -- Everything is made by me except anti afk
 -- Discord: CanEge#1319
+-- You need to use auto clicker for messages
 _G.target = nil
 _G.tradeid = nil
 _G.autotrade = false
