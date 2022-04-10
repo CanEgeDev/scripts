@@ -71,6 +71,7 @@ ScreenGui.Name = math.random(1,999999)
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.ResetOnSpawn = false
+ScreenGui.DisplayOrder = 1
 
 Frame.Name = "Frame"
 Frame.Parent = ScreenGui
