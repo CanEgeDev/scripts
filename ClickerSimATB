@@ -1,0 +1,1607 @@
+-- ~ CanEge
+-- Clicker Simulator Auto Trade Bot
+-- Everything is made by me
+-- Discord: CanEge#1319
+_G.target = nil
+_G.tradeid = nil
+_G.autotrade = false
+_G.webhooklog = false
+_G.consolelog = false
+_G.opponentsName = nil
+_G.opponentsID = nil
+_G.freepetmode = false
+_G.usemaxval = false
+_G.allowbottp = false
+_G.maxval = ""
+_G.tpval = 2
+_G.trading = false
+_G.tradecount = 0
+
+--Webhook Setup
+local HttpRequest = http_request;
+ 
+if syn then
+  HttpRequest = syn.request
+else
+  HttpRequest = http_request
+end
+
+-- GUI
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("ImageButton")
+local yo = Instance.new("TextLabel")
+local autotradef = Instance.new("ImageButton")
+local slide = Instance.new("ImageButton")
+local Frame_2 = Instance.new("ImageButton")
+local TextLabel = Instance.new("TextLabel")
+local autotrade = Instance.new("TextButton")
+local consolelog = Instance.new("ImageButton")
+local slide_2 = Instance.new("ImageButton")
+local Frame_3 = Instance.new("ImageButton")
+local TextLabel_2 = Instance.new("TextLabel")
+local console = Instance.new("TextButton")
+local dc = Instance.new("ImageButton")
+local TextBox = Instance.new("TextBox")
+local maxvalue = Instance.new("ImageButton")
+local slide_3 = Instance.new("ImageButton")
+local Frame_4 = Instance.new("ImageButton")
+local TextLabel_3 = Instance.new("TextLabel")
+local maxval = Instance.new("TextButton")
+local maxvalue3 = Instance.new("ImageButton")
+local TextBox_2 = Instance.new("TextBox")
+local webhooklog = Instance.new("ImageButton")
+local slide_4 = Instance.new("ImageButton")
+local Frame_5 = Instance.new("ImageButton")
+local TextLabel_4 = Instance.new("TextLabel")
+local webhook = Instance.new("TextButton")
+local TextLabel_5 = Instance.new("TextLabel")
+local abottp = Instance.new("ImageButton")
+local slide_5 = Instance.new("ImageButton")
+local Frame_6 = Instance.new("ImageButton")
+local TextLabel_6 = Instance.new("TextLabel")
+local abot = Instance.new("TextButton")
+local Button = Instance.new("ImageButton")
+local TextLabel_7 = Instance.new("TextLabel")
+local freepetmode = Instance.new("ImageButton")
+local slide_6 = Instance.new("ImageButton")
+local Frame_7 = Instance.new("ImageButton")
+local TextLabel_8 = Instance.new("TextLabel")
+local freepet = Instance.new("TextButton")
+
+ScreenGui.Name = math.random(1,999999)
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+ScreenGui.DisplayOrder = 1
+
+Frame.Name = "Frame"
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Frame.BackgroundTransparency = 1.000
+Frame.Position = UDim2.new(0.368909508, 0, 0.320682496, 0)
+Frame.Size = UDim2.new(0, 352, 0, 24)
+Frame.Image = "rbxassetid://2790390993"
+Frame.ImageColor3 = Color3.fromRGB(25, 25, 25)
+Frame.ScaleType = Enum.ScaleType.Slice
+Frame.SliceCenter = Rect.new(16, 16, 240, 240)
+Frame.Draggable = true
+
+yo.Name = "yo"
+yo.Parent = Frame
+yo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+yo.BackgroundTransparency = 1.000
+yo.Position = UDim2.new(-0.00568185002, 0, 0.00833317637, 0)
+yo.Size = UDim2.new(0, 352, 0, 26)
+yo.Font = Enum.Font.Roboto
+yo.Text = "CanEge's Clicker Simulator Auto Trade Bot"
+yo.TextColor3 = Color3.fromRGB(255, 255, 255)
+yo.TextSize = 14.000
+_G.status = yo
+
+autotradef.Name = "autotradef"
+autotradef.Parent = Frame
+autotradef.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+autotradef.BackgroundTransparency = 1.000
+autotradef.Position = UDim2.new(0, 0, 0, 38)
+autotradef.Size = UDim2.new(0, 142, 0, 29)
+autotradef.Visible = false
+autotradef.Image = "rbxassetid://2790390993"
+autotradef.ImageColor3 = Color3.fromRGB(30, 30, 30)
+autotradef.ScaleType = Enum.ScaleType.Slice
+autotradef.SliceCenter = Rect.new(16, 16, 240, 240)
+
+slide.Name = "slide"
+slide.Parent = autotradef
+slide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+slide.BackgroundTransparency = 1.000
+slide.Position = UDim2.new(0.700316727, 0, 0.283987105, 0)
+slide.Size = UDim2.new(0, 35, 0, 11)
+slide.Image = "rbxassetid://2790390993"
+slide.ImageColor3 = Color3.fromRGB(170, 0, 0)
+slide.ScaleType = Enum.ScaleType.Slice
+slide.SliceCenter = Rect.new(16, 16, 240, 240)
+
+Frame_2.Name = "Frame"
+Frame_2.Parent = slide
+Frame_2.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Frame_2.BackgroundTransparency = 1.000
+Frame_2.Position = UDim2.new(-0.0240000002, 0, 0, 0)
+Frame_2.Size = UDim2.new(0, 10, 0, 11)
+Frame_2.Image = "rbxassetid://2790371148"
+Frame_2.ScaleType = Enum.ScaleType.Slice
+Frame_2.SliceCenter = Rect.new(32, 32, 224, 224)
+
+TextLabel.Parent = slide
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(-2.6432085, 0, -0.754545689, 0)
+TextLabel.Size = UDim2.new(0, 101, 0, 26)
+TextLabel.Font = Enum.Font.Roboto
+TextLabel.Text = "Auto Trade"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 14.000
+
+autotrade.Name = "autotrade"
+autotrade.Parent = slide
+autotrade.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+autotrade.BackgroundTransparency = 1.000
+autotrade.Position = UDim2.new(-2.82885313, 0, -0.845343828, 0)
+autotrade.Size = UDim2.new(0, 135, 0, 26)
+autotrade.Font = Enum.Font.SourceSans
+autotrade.TextColor3 = Color3.fromRGB(0, 0, 0)
+autotrade.TextSize = 14.000
+autotrade.TextTransparency = 1.000
+
+consolelog.Name = "consolelog"
+consolelog.Parent = Frame
+consolelog.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+consolelog.BackgroundTransparency = 1.000
+consolelog.Position = UDim2.new(0, 0, 0, 114)
+consolelog.Size = UDim2.new(0, 142, 0, 29)
+consolelog.Visible = false
+consolelog.Image = "rbxassetid://2790390993"
+consolelog.ImageColor3 = Color3.fromRGB(30, 30, 30)
+consolelog.ScaleType = Enum.ScaleType.Slice
+consolelog.SliceCenter = Rect.new(16, 16, 240, 240)
+
+slide_2.Name = "slide"
+slide_2.Parent = consolelog
+slide_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+slide_2.BackgroundTransparency = 1.000
+slide_2.Position = UDim2.new(0.700316727, 0, 0.283987105, 0)
+slide_2.Size = UDim2.new(0, 35, 0, 11)
+slide_2.Image = "rbxassetid://2790390993"
+slide_2.ImageColor3 = Color3.fromRGB(170, 0, 0)
+slide_2.ScaleType = Enum.ScaleType.Slice
+slide_2.SliceCenter = Rect.new(16, 16, 240, 240)
+
+Frame_3.Name = "Frame"
+Frame_3.Parent = slide_2
+Frame_3.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Frame_3.BackgroundTransparency = 1.000
+Frame_3.Position = UDim2.new(-0.0240000002, 0, 0, 0)
+Frame_3.Size = UDim2.new(0, 10, 0, 11)
+Frame_3.Image = "rbxassetid://2790371148"
+Frame_3.ScaleType = Enum.ScaleType.Slice
+Frame_3.SliceCenter = Rect.new(32, 32, 224, 224)
+
+TextLabel_2.Parent = slide_2
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.Position = UDim2.new(-2.64320946, 0, -0.754545212, 0)
+TextLabel_2.Size = UDim2.new(0, 101, 0, 26)
+TextLabel_2.Font = Enum.Font.Roboto
+TextLabel_2.Text = "Console Log"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextSize = 14.000
+
+console.Name = "console"
+console.Parent = slide_2
+console.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+console.BackgroundTransparency = 1.000
+console.Position = UDim2.new(-2.82885313, 0, -0.845343828, 0)
+console.Size = UDim2.new(0, 135, 0, 26)
+console.Font = Enum.Font.SourceSans
+console.TextColor3 = Color3.fromRGB(0, 0, 0)
+console.TextSize = 14.000
+console.TextTransparency = 1.000
+
+dc.Name = "dc"
+dc.Parent = Frame
+dc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+dc.BackgroundTransparency = 1.000
+dc.Position = UDim2.new(0, 214, 0, 211)
+dc.Size = UDim2.new(0, 136, 0, 29)
+dc.Visible = false
+dc.Image = "rbxassetid://2790390993"
+dc.ImageColor3 = Color3.fromRGB(30, 30, 30)
+dc.ScaleType = Enum.ScaleType.Slice
+dc.SliceCenter = Rect.new(16, 16, 240, 240)
+
+TextBox.Parent = dc
+TextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+TextBox.BackgroundTransparency = 1.000
+TextBox.BorderColor3 = Color3.fromRGB(25, 25, 25)
+TextBox.Position = UDim2.new(0.0704225302, 0, 0.137931049, 0)
+TextBox.Size = UDim2.new(0, 124, 0, 19)
+TextBox.ClearTextOnFocus = false
+TextBox.Font = Enum.Font.Roboto
+TextBox.Text = "type here dc webhook"
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextSize = 14.000
+_G.webhook = TextBox
+
+maxvalue.Name = "maxvalue"
+maxvalue.Parent = Frame
+maxvalue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+maxvalue.BackgroundTransparency = 1.000
+maxvalue.Position = UDim2.new(0, 208, 0, 38)
+maxvalue.Size = UDim2.new(0, 142, 0, 29)
+maxvalue.Visible = false
+maxvalue.Image = "rbxassetid://2790390993"
+maxvalue.ImageColor3 = Color3.fromRGB(30, 30, 30)
+maxvalue.ScaleType = Enum.ScaleType.Slice
+maxvalue.SliceCenter = Rect.new(16, 16, 240, 240)
+
+slide_3.Name = "slide"
+slide_3.Parent = maxvalue
+slide_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+slide_3.BackgroundTransparency = 1.000
+slide_3.Position = UDim2.new(0.700316727, 0, 0.283987105, 0)
+slide_3.Size = UDim2.new(0, 35, 0, 11)
+slide_3.Image = "rbxassetid://2790390993"
+slide_3.ImageColor3 = Color3.fromRGB(170, 0, 0)
+slide_3.ScaleType = Enum.ScaleType.Slice
+slide_3.SliceCenter = Rect.new(16, 16, 240, 240)
+
+Frame_4.Name = "Frame"
+Frame_4.Parent = slide_3
+Frame_4.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Frame_4.BackgroundTransparency = 1.000
+Frame_4.Position = UDim2.new(-0.0240000002, 0, 0, 0)
+Frame_4.Size = UDim2.new(0, 10, 0, 11)
+Frame_4.Image = "rbxassetid://2790371148"
+Frame_4.ScaleType = Enum.ScaleType.Slice
+Frame_4.SliceCenter = Rect.new(32, 32, 224, 224)
+
+TextLabel_3.Parent = slide_3
+TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.BackgroundTransparency = 1.000
+TextLabel_3.Position = UDim2.new(-2.64320898, 0, -0.663636208, 0)
+TextLabel_3.Size = UDim2.new(0, 101, 0, 26)
+TextLabel_3.Font = Enum.Font.Roboto
+TextLabel_3.Text = "Max Value"
+TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.TextSize = 14.000
+
+maxval.Name = "maxval"
+maxval.Parent = slide_3
+maxval.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+maxval.BackgroundTransparency = 1.000
+maxval.Position = UDim2.new(-2.82885313, 0, -0.845343828, 0)
+maxval.Size = UDim2.new(0, 135, 0, 26)
+maxval.Font = Enum.Font.SourceSans
+maxval.TextColor3 = Color3.fromRGB(0, 0, 0)
+maxval.TextSize = 14.000
+maxval.TextTransparency = 1.000
+
+maxvalue3.Name = "maxvalue3"
+maxvalue3.Parent = Frame
+maxvalue3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+maxvalue3.BackgroundTransparency = 1.000
+maxvalue3.Position = UDim2.new(0, 208, 0, 75)
+maxvalue3.Size = UDim2.new(0, 142, 0, 29)
+maxvalue3.Visible = false
+maxvalue3.Image = "rbxassetid://2790390993"
+maxvalue3.ImageColor3 = Color3.fromRGB(30, 30, 30)
+maxvalue3.ScaleType = Enum.ScaleType.Slice
+maxvalue3.SliceCenter = Rect.new(16, 16, 240, 240)
+
+TextBox_2.Parent = maxvalue3
+TextBox_2.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+TextBox_2.BackgroundTransparency = 1.000
+TextBox_2.BorderColor3 = Color3.fromRGB(25, 25, 25)
+TextBox_2.Position = UDim2.new(0.0704225302, 0, 0.137931049, 0)
+TextBox_2.Size = UDim2.new(0, 124, 0, 19)
+TextBox_2.ClearTextOnFocus = false
+TextBox_2.Font = Enum.Font.Roboto
+TextBox_2.Text = "type here max val ; ex: 100b"
+TextBox_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox_2.TextSize = 14.000
+_G.maxval = TextBox_2
+
+webhooklog.Name = "webhooklog"
+webhooklog.Parent = Frame
+webhooklog.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+webhooklog.BackgroundTransparency = 1.000
+webhooklog.Position = UDim2.new(0, 0, 0, 155)
+webhooklog.Size = UDim2.new(0, 142, 0, 29)
+webhooklog.Visible = false
+webhooklog.Image = "rbxassetid://2790390993"
+webhooklog.ImageColor3 = Color3.fromRGB(30, 30, 30)
+webhooklog.ScaleType = Enum.ScaleType.Slice
+webhooklog.SliceCenter = Rect.new(16, 16, 240, 240)
+
+slide_4.Name = "slide"
+slide_4.Parent = webhooklog
+slide_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+slide_4.BackgroundTransparency = 1.000
+slide_4.Position = UDim2.new(0.700316727, 0, 0.283987105, 0)
+slide_4.Size = UDim2.new(0, 35, 0, 11)
+slide_4.Image = "rbxassetid://2790390993"
+slide_4.ImageColor3 = Color3.fromRGB(170, 0, 0)
+slide_4.ScaleType = Enum.ScaleType.Slice
+slide_4.SliceCenter = Rect.new(16, 16, 240, 240)
+
+Frame_5.Name = "Frame"
+Frame_5.Parent = slide_4
+Frame_5.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Frame_5.BackgroundTransparency = 1.000
+Frame_5.Position = UDim2.new(-0.0240000002, 0, 0, 0)
+Frame_5.Size = UDim2.new(0, 10, 0, 11)
+Frame_5.Image = "rbxassetid://2790371148"
+Frame_5.ScaleType = Enum.ScaleType.Slice
+Frame_5.SliceCenter = Rect.new(32, 32, 224, 224)
+
+TextLabel_4.Parent = slide_4
+TextLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.BackgroundTransparency = 1.000
+TextLabel_4.Position = UDim2.new(-2.84320927, 0, -0.754543543, 0)
+TextLabel_4.Size = UDim2.new(0, 101, 0, 26)
+TextLabel_4.Font = Enum.Font.Roboto
+TextLabel_4.Text = "Webhook Log"
+TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.TextSize = 14.000
+
+webhook.Name = "webhook"
+webhook.Parent = slide_4
+webhook.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+webhook.BackgroundTransparency = 1.000
+webhook.Position = UDim2.new(-2.82885313, 0, -0.845343828, 0)
+webhook.Size = UDim2.new(0, 135, 0, 26)
+webhook.Font = Enum.Font.SourceSans
+webhook.TextColor3 = Color3.fromRGB(0, 0, 0)
+webhook.TextSize = 14.000
+webhook.TextTransparency = 1.000
+
+TextLabel_5.Parent = Frame
+TextLabel_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_5.BackgroundTransparency = 1.000
+TextLabel_5.Position = UDim2.new(0, 214, 0, 191)
+TextLabel_5.Size = UDim2.new(0, 153, 0, 18)
+TextLabel_5.Visible = false
+TextLabel_5.Font = Enum.Font.Roboto
+TextLabel_5.Text = "Discord Webhook"
+TextLabel_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_5.TextSize = 14.000
+
+abottp.Name = "abottp"
+abottp.Parent = Frame
+abottp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+abottp.BackgroundTransparency = 1.000
+abottp.Position = UDim2.new(0, 0, 0, 75)
+abottp.Size = UDim2.new(0, 142, 0, 29)
+abottp.Visible = false
+abottp.Image = "rbxassetid://2790390993"
+abottp.ImageColor3 = Color3.fromRGB(30, 30, 30)
+abottp.ScaleType = Enum.ScaleType.Slice
+abottp.SliceCenter = Rect.new(16, 16, 240, 240)
+
+slide_5.Name = "slide"
+slide_5.Parent = abottp
+slide_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+slide_5.BackgroundTransparency = 1.000
+slide_5.Position = UDim2.new(0.700316727, 0, 0.283987105, 0)
+slide_5.Size = UDim2.new(0, 35, 0, 11)
+slide_5.Image = "rbxassetid://2790390993"
+slide_5.ImageColor3 = Color3.fromRGB(170, 0, 0)
+slide_5.ScaleType = Enum.ScaleType.Slice
+slide_5.SliceCenter = Rect.new(16, 16, 240, 240)
+
+Frame_6.Name = "Frame"
+Frame_6.Parent = slide_5
+Frame_6.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Frame_6.BackgroundTransparency = 1.000
+Frame_6.Position = UDim2.new(-0.0240000002, 0, 0, 0)
+Frame_6.Size = UDim2.new(0, 10, 0, 11)
+Frame_6.Image = "rbxassetid://2790371148"
+Frame_6.ScaleType = Enum.ScaleType.Slice
+Frame_6.SliceCenter = Rect.new(32, 32, 224, 224)
+
+TextLabel_6.Parent = slide_5
+TextLabel_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_6.BackgroundTransparency = 1.000
+TextLabel_6.Position = UDim2.new(-2.8432076, 0, -0.754545927, 0)
+TextLabel_6.Size = UDim2.new(0, 101, 0, 26)
+TextLabel_6.Font = Enum.Font.Roboto
+TextLabel_6.Text = "Allow Bot to TP"
+TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_6.TextSize = 14.000
+
+abot.Name = "abot"
+abot.Parent = slide_5
+abot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+abot.BackgroundTransparency = 1.000
+abot.Position = UDim2.new(-2.82885313, 0, -0.845343828, 0)
+abot.Size = UDim2.new(0, 135, 0, 26)
+abot.Font = Enum.Font.SourceSans
+abot.TextColor3 = Color3.fromRGB(0, 0, 0)
+abot.TextSize = 14.000
+abot.TextTransparency = 1.000
+
+Button.Name = "Button"
+Button.Parent = Frame
+Button.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Button.BackgroundTransparency = 1.000
+Button.Position = UDim2.new(0.893078744, 0, 0.00956761837, 0)
+Button.Size = UDim2.new(0, 35, 0, 25)
+Button.Image = "rbxassetid://2790389767"
+Button.ImageColor3 = Color3.fromRGB(25, 25, 25)
+Button.ImageTransparency = 1.000
+Button.ScaleType = Enum.ScaleType.Slice
+Button.SliceCenter = Rect.new(8, 8, 248, 248)
+
+TextLabel_7.Parent = Button
+TextLabel_7.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_7.BackgroundTransparency = 1.000
+TextLabel_7.BorderSizePixel = 0
+TextLabel_7.Position = UDim2.new(0.527242601, 0, 0.461989045, 0)
+TextLabel_7.Size = UDim2.new(1.2199446, -5, 1.16371465, -5)
+TextLabel_7.Font = Enum.Font.GothamSemibold
+TextLabel_7.Text = "+"
+TextLabel_7.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_7.TextSize = 14.000
+
+freepetmode.Name = "freepetmode"
+freepetmode.Parent = Frame
+freepetmode.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+freepetmode.BackgroundTransparency = 1.000
+freepetmode.Position = UDim2.new(0, 209, 0, 155)
+freepetmode.Size = UDim2.new(0, 142, 0, 29)
+freepetmode.Visible = false
+freepetmode.Image = "rbxassetid://2790390993"
+freepetmode.ImageColor3 = Color3.fromRGB(30, 30, 30)
+freepetmode.ScaleType = Enum.ScaleType.Slice
+freepetmode.SliceCenter = Rect.new(16, 16, 240, 240)
+
+slide_6.Name = "slide"
+slide_6.Parent = freepetmode
+slide_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+slide_6.BackgroundTransparency = 1.000
+slide_6.Position = UDim2.new(0.700316727, 0, 0.283987105, 0)
+slide_6.Size = UDim2.new(0, 35, 0, 11)
+slide_6.Image = "rbxassetid://2790390993"
+slide_6.ImageColor3 = Color3.fromRGB(170, 0, 0)
+slide_6.ScaleType = Enum.ScaleType.Slice
+slide_6.SliceCenter = Rect.new(16, 16, 240, 240)
+
+Frame_7.Name = "Frame"
+Frame_7.Parent = slide_6
+Frame_7.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Frame_7.BackgroundTransparency = 1.000
+Frame_7.Position = UDim2.new(-0.0240000002, 0, 0, 0)
+Frame_7.Size = UDim2.new(0, 10, 0, 11)
+Frame_7.Image = "rbxassetid://2790371148"
+Frame_7.ScaleType = Enum.ScaleType.Slice
+Frame_7.SliceCenter = Rect.new(32, 32, 224, 224)
+
+TextLabel_8.Parent = slide_6
+TextLabel_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_8.BackgroundTransparency = 1.000
+TextLabel_8.Position = UDim2.new(-2.87178063, 0, -0.754543304, 0)
+TextLabel_8.Size = UDim2.new(0, 101, 0, 26)
+TextLabel_8.Font = Enum.Font.Roboto
+TextLabel_8.Text = "Free Pet Mode"
+TextLabel_8.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_8.TextSize = 14.000
+
+freepet.Name = "freepet"
+freepet.Parent = slide_6
+freepet.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+freepet.BackgroundTransparency = 1.000
+freepet.Position = UDim2.new(-2.82885313, 0, -0.845343828, 0)
+freepet.Size = UDim2.new(0, 135, 0, 26)
+freepet.Font = Enum.Font.SourceSans
+freepet.TextColor3 = Color3.fromRGB(0, 0, 0)
+freepet.TextSize = 14.000
+freepet.TextTransparency = 1.000
+
+autotrade.MouseButton1Click:Connect(function()
+	local Frame2 = Frame_2
+
+	if _G.autotrade == false then
+		Frame2:TweenPosition(
+			UDim2.new(0.747, 0, 0, 0),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+		Frame2.Parent.ImageColor3 = Color3.fromRGB(85, 170, 0)
+		_G.autotrade = true
+	end
+
+end)
+
+autotrade.MouseButton1Click:Connect(function()
+	local Frame2 = Frame_2
+	if _G.autotrade == true then
+		Frame2:TweenPosition(
+			UDim2.new(-0.024, 0, 0, 0),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+		Frame2.Parent.ImageColor3 = Color3.fromRGB(170, 0, 0)
+		_G.autotrade = false
+	end
+end)
+
+console.MouseButton1Click:Connect(function()
+	local Frame2 = Frame_3
+
+	if _G.consolelog == false then
+		Frame2:TweenPosition(
+			UDim2.new(0.747, 0, 0, 0),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+		Frame2.Parent.ImageColor3 = Color3.fromRGB(85, 170, 0)
+		_G.consolelog = true
+		rconsolename("Clicker Simulator Auto Trade Logs")
+	end
+
+end)
+
+console.MouseButton1Click:Connect(function()
+	local Frame2 = Frame_3
+	if _G.consolelog == true then
+		Frame2:TweenPosition(
+			UDim2.new(-0.024, 0, 0, 0),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+		Frame2.Parent.ImageColor3 = Color3.fromRGB(170, 0, 0)
+		_G.consolelog = false
+	end
+end)
+
+maxval.MouseButton1Click:Connect(function()
+	local Frame2 = Frame_4
+
+	if _G.usemaxval == false then
+		Frame2:TweenPosition(
+			UDim2.new(0.747, 0, 0, 0),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+		Frame2.Parent.ImageColor3 = Color3.fromRGB(85, 170, 0)
+		_G.usemaxval = true
+	end
+
+end)
+
+maxval.MouseButton1Click:Connect(function()
+	local Frame2 = Frame_4
+	if _G.usemaxval == true then
+		Frame2:TweenPosition(
+			UDim2.new(-0.024, 0, 0, 0),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+		Frame2.Parent.ImageColor3 = Color3.fromRGB(170, 0, 0)
+		_G.usemaxval = false
+	end
+end)
+
+webhook.MouseButton1Click:Connect(function()
+	local Frame2 = Frame_5
+
+	if _G.webhooklog == false then
+		Frame2:TweenPosition(
+			UDim2.new(0.747, 0, 0, 0),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+		Frame2.Parent.ImageColor3 = Color3.fromRGB(85, 170, 0)
+		_G.webhooklog = true
+	end
+
+end)
+
+webhook.MouseButton1Click:Connect(function()
+	local Frame2 = Frame_5
+	if _G.webhooklog == true then
+		Frame2:TweenPosition(
+			UDim2.new(-0.024, 0, 0, 0),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+		Frame2.Parent.ImageColor3 = Color3.fromRGB(170, 0, 0)
+		_G.webhooklog = false
+	end
+end)
+
+abot.MouseButton1Click:Connect(function()
+	local Frame2 = Frame_6
+
+	if _G.allowbottp == false then
+		Frame2:TweenPosition(
+			UDim2.new(0.747, 0, 0, 0),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+		Frame2.Parent.ImageColor3 = Color3.fromRGB(85, 170, 0)
+		_G.allowbottp = true
+	end
+
+end)
+
+abot.MouseButton1Click:Connect(function()
+	local Frame2 = Frame_6
+	if _G.allowbottp == true then
+		Frame2:TweenPosition(
+			UDim2.new(-0.024, 0, 0, 0),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+		Frame2.Parent.ImageColor3 = Color3.fromRGB(170, 0, 0)
+		_G.allowbottp = false
+	end
+end)
+
+local t = TextLabel_7
+Button.MouseButton1Click:Connect(function()
+	local Frame2 = Frame
+
+	if t.Text == "+" then
+		Frame2:TweenSize(
+			UDim2.new(0, 352, 0, 240),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+		t.Text = "-"
+		for i,v in pairs(Frame2:GetChildren())do
+			if v.Name ~= "yo" and not v:IsA("LocalScript") and v ~= Button then
+				v.Visible = true
+			end
+		end
+	end
+
+end)
+
+Button.MouseButton1Click:Connect(function()
+	local Frame2 = Frame
+	if t.Text == "-" then
+		Frame2:TweenSize(
+			UDim2.new(0, 352, 0, 24),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		for i,v in pairs(Frame2:GetChildren())do
+			if v.Name ~= "yo" and not v:IsA("LocalScript") and v ~= Button then
+				v.Visible = false
+			end
+		end
+		wait(0.3)
+		t.Text = "+"
+	end
+
+end)
+
+	freepet.MouseButton1Click:Connect(function()
+		local Frame2 = Frame_7
+		
+		if _G.freepetmode == false then
+		Frame2:TweenPosition(
+			UDim2.new(0.747, 0, 0, 0),
+			"Out",
+			"Linear",
+			0.3,
+			false,
+			nil
+		)	
+		wait(0.3)
+			Frame2.Parent.ImageColor3 = Color3.fromRGB(85, 170, 0)
+			_G.freepetmode = true
+		end
+		
+	end)
+	
+	freepet.MouseButton1Click:Connect(function()
+		local Frame2 = Frame_7
+		if _G.freepetmode == true then
+			Frame2:TweenPosition(
+				UDim2.new(-0.024, 0, 0, 0),
+				"Out",
+				"Linear",
+				0.3,
+				false,
+				nil
+			)	
+			wait(0.3)
+			Frame2.Parent.ImageColor3 = Color3.fromRGB(170, 0, 0)
+			_G.freepetmode = false
+		end
+	end)
+
+-- Main Script
+
+  local handler = workspace:FindFirstChild("Handler")
+
+  if not handler then
+      local Folder = Instance.new("Folder")
+      Folder.Parent = workspace
+      Folder.Name = "Handler"
+  end
+
+  local players = {}
+  local blocklist = {}
+  
+  for i,v in pairs(game.Players:GetPlayers())do
+      if not table.find(players, v.Name) and v.Name ~= game.Players.LocalPlayer.Name then
+          table.insert(players, v.Name)
+      end
+  end
+  
+  game.Players.PlayerAdded:Connect(function(player)
+      if not table.find(players, player.Name) then
+          table.insert(players, player.Name)
+      end
+  end)
+  
+  game.Players.PlayerRemoving:Connect(function(player)
+      if not table.find(players, player.Name) then
+          table.insert(players, player.Name)
+      end
+  end)
+  
+  local function sendTrade(target)
+	local args = {
+		[1] = target
+	}
+
+	game:GetService("ReplicatedStorage").Events.Client.trading.sendTradeRequest:FireServer(unpack(args))
+
+  end
+  
+  local function tpserver()
+      local ts = game:GetService("TeleportService")
+      if _G.allowbottp == true then
+          _G.status = "Teleporting"
+          ts:Teleport(game.PlaceId, game.Players.LocalPlayer)
+          print("zaaa")
+      end
+  end
+  
+  local function getTarget()
+      if table.maxn(blocklist) >= 4 then
+          tpserver()
+      end
+  
+      for i,v in pairs(game.Players:GetPlayers())do
+          if not table.find(blocklist,v.DisplayName) then
+            if v.Name ~= game.Players.LocalPlayer.Name then
+				sendTrade(v.Name)
+			end
+          end
+      end
+  end
+  
+  game:GetService("RunService").RenderStepped:Connect(function()
+      wait(5)
+      if _G.autotrade == true and _G.trading == false then
+          getTarget()
+      end
+      wait(55)
+      if _G.tradecount <= _G.tpval and _G.trading == false then
+          tpserver()
+      elseif _G.tradecount <= _G.tpval and _G.trading == true then
+          wait(10)
+          if _G.tradecount <= _G.tpval then
+              tpserver()
+          end
+      elseif _G.tradecount > _G.tpval then
+          _G.tpval = _G.tpval + 2
+      end
+  end)
+
+  local function unabbreviate(number)
+	if string.find(number,"K") then
+		if string.sub(number,2,2) == "K" and string.len(number) == 2 then
+			number = string.gsub(number,"K","000")
+		end
+		if string.sub(number,2,2) == "." then
+			if string.sub(number,4,4) == "K" then
+				number = string.sub(number,1,1)..string.sub(number,3,3).."00"
+			end
+		end
+		if string.sub(number,2,2) == "." then
+			if string.sub(number,5,5) == "K" then
+				number = string.sub(number,1,1)..string.sub(number,3,3)..string.sub(number,4,4).."0"
+			end
+		end
+		if string.sub(number,3,3) == "K" and string.len(number) == 3 then
+			number = string.gsub(number,"K","000")
+		end
+		if string.sub(number,3,3) == "." then
+			if string.sub(number,5,5) == "K" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,4,4).."00"
+			end
+		end
+		if string.sub(number,3,3) == "." then
+			if string.sub(number,6,6) == "K" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,4,4)..string.sub(number,5,5).."0"
+			end
+		end
+		if string.sub(number,4,4) == "K" and string.len(number) == 4 then
+			number = string.gsub(number,"K","000")
+		end
+		if string.sub(number,4,4) == "." then
+			if string.sub(number,6,6) == "K" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,3,3)..string.sub(number,5,5).."00"
+			end
+		end
+		if string.sub(number,4,4) == "." then
+			if string.sub(number,7,7) == "K" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,3,3)..string.sub(number,5,5)..string.sub(number,6,6).."0"
+			end
+		end
+	end
+	if string.find(number,"M") then
+		if string.sub(number,2,2) == "M" and string.len(number) == 2 then
+			number = string.gsub(number,"M","000000")
+		end
+
+		if string.sub(number,2,2) == "." then
+			if string.sub(number,4,4) == "M" then
+				number = string.sub(number,1,1)..string.sub(number,3,3).."00000"
+			end
+		end
+		if string.sub(number,2,2) == "." then
+			if string.sub(number,5,5) == "M" then
+				number = string.sub(number,1,1)..string.sub(number,3,3)..string.sub(number,4,4).."0000"
+			end
+		end
+		if string.sub(number,3,3) == "M" and string.len(number) == 3 then
+			number = string.gsub(number,"M","000000")
+		end
+		if string.sub(number,3,3) == "." then
+			if string.sub(number,5,5) == "M" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,4,4).."00000"
+			end
+		end
+		if string.sub(number,3,3) == "." then
+			if string.sub(number,6,6) == "M" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,4,4)..string.sub(number,5,5).."0000"
+			end
+		end
+		if string.sub(number,4,4) == "M" and string.len(number) == 4 then
+			number = string.gsub(number,"M","000000")
+		end
+		if string.sub(number,4,4) == "." then
+			if string.sub(number,6,6) == "M" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,3,3)..string.sub(number,5,5).."00000"
+			end
+		end
+		if string.sub(number,4,4) == "." then
+			if string.sub(number,7,7) == "M" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,3,3)..string.sub(number,5,5)..string.sub(number,6,6).."0000"
+			end
+		end
+	end
+	if string.find(number,"B") then
+		if string.sub(number,2,2) == "B" and string.len(number) == 2 then
+			number = string.gsub(number,"B","000000000")
+		end
+		if string.sub(number,2,2) == "." then
+			if string.sub(number,4,4) == "B" then
+				number = string.sub(number,1,1)..string.sub(number,3,3).."00000000"
+			end
+		end
+		if string.sub(number,2,2) == "." then
+			if string.sub(number,5,5) == "B" then
+				number = string.sub(number,1,1)..string.sub(number,3,3)..string.sub(number,4,4).."0000000"
+			end
+		end
+		if string.sub(number,3,3) == "B" and string.len(number) == 3 then
+			number = string.gsub(number,"B","000000000")
+		end
+		if string.sub(number,3,3) == "." then
+			if string.sub(number,5,5) == "B" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,4,4).."00000000"
+			end
+		end
+		if string.sub(number,3,3) == "." then
+			if string.sub(number,6,6) == "B" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,4,4)..string.sub(number,5,5).."0000000"
+			end
+		end
+		if string.sub(number,4,4) == "B" and string.len(number) == 4 then
+			number = string.gsub(number,"B","000000000")
+		end
+		if string.sub(number,4,4) == "." then
+			if string.sub(number,6,6) == "B" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,3,3)..string.sub(number,5,5).."00000000"
+			end
+		end
+		if string.sub(number,4,4) == "." then
+			if string.sub(number,7,7) == "B" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,3,3)..string.sub(number,5,5)..string.sub(number,6,6).."0000000"
+			end
+		end
+	end
+	if string.find(number,"T") then
+		if string.sub(number,2,2) == "T" and string.len(number) == 2 then
+			number = string.gsub(number,"T","000000000000")
+		end
+		if string.sub(number,2,2) == "." then
+			if string.sub(number,4,4) == "T" then
+				number = string.sub(number,1,1)..string.sub(number,3,3).."00000000000"
+			end
+		end
+		if string.sub(number,2,2) == "." then
+			if string.sub(number,5,5) == "T" then
+				number = string.sub(number,1,1)..string.sub(number,3,3)..string.sub(number,4,4).."0000000000"
+			end
+		end
+		if string.sub(number,3,3) == "T" and string.len(number) == 3 then
+			number = string.gsub(number,"T","000000000000")
+		end
+		if string.sub(number,3,3) == "." then
+			if string.sub(number,5,5) == "T" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,4,4).."00000000000"
+			end
+		end
+		if string.sub(number,3,3) == "." then
+			if string.sub(number,6,6) == "T" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,4,4)..string.sub(number,5,5).."0000000000"
+			end
+		end
+		if string.sub(number,4,4) == "T" and string.len(number) == 4 then
+			number = string.gsub(number,"T","000000000000")
+		end
+		if string.sub(number,4,4) == "." then
+			if string.sub(number,6,6) == "T" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,3,3)..string.sub(number,5,5).."00000000000"
+			end
+		end
+		if string.sub(number,4,4) == "." then
+			if string.sub(number,7,7) == "T" then
+				number = string.sub(number,1,1)..string.sub(number,2,2)..string.sub(number,3,3)..string.sub(number,5,5)..string.sub(number,6,6).."0000000000"
+			end
+		end
+		
+	end
+	return number
+end
+  
+  local function ready()
+    game:GetService("ReplicatedStorage").Events.Client.trading.readyToggle:FireServer()
+	_G.status = "Ready!"
+	wait(0.1)
+	_G.status.Text = "CanEge's Clicker Simulator Auto Trade Bot"
+end
+
+local function getOpponentsValue()
+    local value = "0"
+    for _,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.otherBG.Scroll:GetChildren())do
+        if v:IsA("ImageButton") and v.Visible == true then
+            value = value + unabbreviate(v:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text)
+			print(value)
+        end
+    end
+    return value
+end
+
+local function getLocalValue()
+    local value = "0"
+    for _,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.youBG.Scroll:GetChildren())do
+        if v:IsA("ImageButton") and v:FindFirstChild("eq") then
+            value = value + unabbreviate(v:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text)
+			print(value)
+        end
+    end
+    return value
+end
+
+local function sendWHMessage(info)
+	local msg = {
+		 
+		["embeds"] = {{
+			["title"] = "**Clicker Simulator Auto Trade Bot**:",
+			["description"] = tostring(info),
+			["color"] = tonumber(0x6a0dad),
+			
+			["fields"] = {
+				{
+					["name"] = "Values:",
+					["value"] = getLocalValue().."  /  "..getOpponentsValue(),
+					["inline"] = false
+	 },
+				{
+					["name"] = "Opponent's Name",
+					["value"] = game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.titleB.Text,--game:GetService("Players").LocalPlayer.PlayerGui.Trading.Frame.Trade.Player.Title.Text,
+					["inline"] = false
+	 },
+	},
+	}
+	}
+	}
+		print("zaaa")
+		HttpRequest({Url=_G.webhook.Text, Body=game:GetService("HttpService"):JSONEncode(msg), Method="POST", Headers={["content-type"] = "application/json"}})
+	end
+	 
+	
+
+local function removePet(petname,petfolder)
+    print("removing pet(s)")
+    local args = {
+        [1] = petname
+    }
+
+	for _,v2 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.youBG.Scroll:GetChildren())do
+        if v2:FindFirstChild("Background") then
+            if v2.petID.Value == petname and v2:FindFirstChild("eq") then
+                if workspace:FindFirstChild("Handler"):FindFirstChild(petfolder.petID.Value) then
+                    if workspace:FindFirstChild("Handler"):FindFirstChild(petfolder.petID.Value):FindFirstChild(petname) then
+                        workspace:FindFirstChild("Handler"):FindFirstChild(petfolder.petID.Value):FindFirstChild(petname):Destroy()
+                        if v2:FindFirstChild("eq") then
+                            v2:FindFirstChild("eq"):Destroy()
+                        end
+                        game:GetService("ReplicatedStorage").Events.Client.trading.updateTradePets:FireServer(unpack(args))
+						_G.status.Text = "Removing pet(s)..."
+						wait(0.3)
+						_G.status.Text = getLocalValue().."  /  "..getOpponentsValue()
+						wait(0.2)
+						_G.status.Text = "CanEge's Clicker Simulator Auto Trade Bot"
+                    end
+                end
+            end
+        end
+    end
+end
+
+local function checkStats()
+
+	if ""..getLocalValue() <= ""..getOpponentsValue() then
+		return true
+	else
+		return false
+	end
+end
+
+local function addPet(petname, petfolder)
+    print("adding pet(s)")
+
+    local args = {
+        [1] = petname
+    }
+    
+    for _,v2 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.youBG.Scroll:GetChildren())do
+        if v2:IsA("ImageButton") then
+            if v2.petID.Value == petname and not v2:FindFirstChild("eq") and unabbreviate(v2:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text) + getLocalValue() <= getOpponentsValue() and not v2:FindFirstChild("eq") and _G.autotrade == true and _G.freepetmode == false and _G.usemaxval == false then
+                if workspace:FindFirstChild("Handler"):FindFirstChild(petfolder.petID.Value) then
+					local Folder = Instance.new("Folder")
+					Folder.Name = v2.petID.Value
+					Folder.Parent = workspace:FindFirstChild("Handler"):FindFirstChild(petfolder.petID.Value)
+					local Folder2 = Instance.new("Folder")
+					Folder2.Name = "eq"
+					Folder2.Parent = v2
+					game:GetService("ReplicatedStorage").Events.Client.trading.updateTradePets:FireServer(unpack(args))
+					_G.status.Text = "Adding pet(s)"
+					wait(0.2)
+					_G.status.Text = getLocalValue().."  /  "..getOpponentsValue()
+					wait(0.2)
+					_G.status.Text = "CanEge's Clicker Simulator Auto Trade Bot"
+                end
+			elseif  v2.petID.Value == petname and not v2:FindFirstChild("eq") and unabbreviate(v2:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text) + getLocalValue() <= getOpponentsValue() and not v2:FindFirstChild("eq") and _G.autotrade == true and _G.freepetmode == false and _G.usemaxval == true and unabbreviate(v2:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text) + getLocalValue() <= tonumber(unabbreviate(_G.maxval.Text)) then
+				if workspace:FindFirstChild("Handler"):FindFirstChild(petfolder.petID.Value) then
+					local Folder = Instance.new("Folder")
+					Folder.Name = v2.petID.Value
+					Folder.Parent = workspace:FindFirstChild("Handler"):FindFirstChild(petfolder.petID.Value)
+					local Folder2 = Instance.new("Folder")
+					Folder2.Name = "eq"
+					Folder2.Parent = v2
+					game:GetService("ReplicatedStorage").Events.Client.trading.updateTradePets:FireServer(unpack(args))
+					_G.status.Text = "Adding pet(s)"
+					wait(0.2)
+					_G.status.Text = getLocalValue().."  /  "..getOpponentsValue()
+					wait(0.2)
+					_G.status.Text = "CanEge's Clicker Simulator Auto Trade Bot"
+                end
+			end
+        end
+	end
+end
+
+game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.otherBG.Scroll.ChildAdded:Connect(function(item)
+	print("child added to scroll")
+	if not workspace:FindFirstChild("Handler"):FindFirstChild(item.petID.Value) then
+		local Folder = Instance.new("Folder")
+		Folder.Name = item.petID.Value
+		Folder.Parent = workspace:FindFirstChild("Handler")
+	end
+
+        for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.youBG.Scroll:GetChildren())do
+			--print(v.petID.Value)
+            if v:IsA("ImageButton") and v:FindFirstChild("Background"):FindFirstChild("selected").Visible == false and unabbreviate(v:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text) + getLocalValue() <= getOpponentsValue() and not v:FindFirstChild("eq") and _G.freepetmode == false then
+				wait(0.1)
+				print("yesssir")
+				addPet(v.petID.Value,item)
+            end
+        end
+
+		if _G.freepetmode then
+			ready()
+		end
+
+	wait()
+
+	if checkStats() == true then
+		ready()
+	end
+
+end)
+
+game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.otherBG.Scroll.ChildRemoved:Connect(function(item)
+    print("childremoved scroll")
+	for _,v2 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.youBG.Scroll:GetChildren())do
+		if v2:IsA("ImageButton") then
+			if _G.freepetmode == false then
+				print("yesss finally")
+				removePet(v2.petID.Value,item)
+			else
+				ready()
+			end
+        end
+
+		--[[if workspace:FindFirstChild("Handler"):FindFirstChild(item.petID.Value) then
+			workspace:FindFirstChild("Handler"):FindFirstChild(item.petID.Value):Destroy()
+		end--]]
+	end
+
+    wait()
+
+	if checkStats() == true then
+		ready()
+	end
+end)
+
+local function a()
+    while wait() do
+		for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.otherBG.Scroll:GetChildren())do
+			if v:IsA("ImageButton") and v.Visible == false then
+				v:Destroy()
+			end
+		end
+		for i2,v2 in pairs(game.Workspace:FindFirstChild("Handler"):GetChildren())do
+		    if _G.trading == false and v2 then
+		        v2:Destroy()
+		    end
+		end
+		
+		for _,v3 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.youBG.Scroll:GetChildren())do
+			if v3:IsA("ImageButton") and v3:FindFirstChild("eq") and _G.trading == false then
+				v3:FindFirstChild("eq"):Destroy()
+			end
+		end
+        
+    end
+end
+
+coroutine.wrap(a)()
+game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground:GetPropertyChangedSignal("Visible"):Connect(function()
+	if game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Visible == true then
+		_G.trading = true
+		_G.tradecount = _G.tradecount + 1
+	else
+		_G.trading = false
+	end
+end)
+
+print("YES")
+if game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Visible == true then
+	_G.trading = true
+end
+
+game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeStatusBackground:GetPropertyChangedSignal("Visible"):Connect(function()
+    local t = game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeStatusBackground.Background.description.Text
+    local n = game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.titleB.Text
+
+    if game:GetService("Players").LocalPlayer.PlayerGui.framesUI:FindFirstChild("tradeStatusBackground").Visible == true then
+    wait()
+    if t == "Trade was cancelled!" then
+        if _G.webhooklog == true then
+            sendWHMessage("Trade was cancelled!")
+        end
+        if _G.consolelog == true then
+            rconsoleinfo("Trade was cancelled! "..n)
+        end
+        print("finally")
+    end
+    
+    if t == "The trade has ended. No pets were traded." then
+        if _G.webhooklog == true then
+            sendWHMessage("The trade has ended. No pets were traded.")
+        end
+        if _G.consolelog == true then
+            rconsoleinfo("The trade has ended No pets were traded. "..n)
+        end
+        print("finally2")
+    end
+    
+    if t == "Trade successfully completed!" then
+        if _G.webhooklog == true then
+            sendWHMessage("Trade successfully completed")
+        end
+        if _G.consolelog == true then
+            rconsoleinfo("Trade successfully completed "..n)
+        end
+
+        print("finally3")
+    end
+
+    print("yessirr")
+    end
+end)
+
+game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground:FindFirstChild("Background").readyB:GetPropertyChangedSignal("Visible"):Connect(function()
+    if game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground:FindFirstChild("Background").readyB.Visible == true and _G.autotrade == true then
+        if checkStats() == true then
+            ready()
+        end
+    end
+end)
+
+-- Pet Value Changer
+do
+	local ScreenGui = Instance.new("ScreenGui")
+	local Frame = Instance.new("ImageButton")
+	local yo = Instance.new("TextLabel")
+	local Button = Instance.new("ImageButton")
+	local TextLabel = Instance.new("TextLabel")
+	local selectpet = Instance.new("TextButton")
+	local confirm = Instance.new("TextButton")
+	local petval = Instance.new("TextBox")
+	local ScrollingFrame = Instance.new("ScrollingFrame")
+	local ListLayout = Instance.new("UIListLayout")
+		
+	ScreenGui.Name = math.random(1,999999)
+	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGui.DisplayOrder = 1
+	ScreenGui.ResetOnSpawn = false
+	
+	Frame.Name = "Frame"
+	Frame.Parent = ScreenGui
+	Frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+	Frame.BackgroundTransparency = 1.000
+	Frame.Position = UDim2.new(0.368909508, 0, 0.334060401, 0)
+	Frame.Size = UDim2.new(0, 222, 0, 24)
+	Frame.Image = "rbxassetid://2790390993"
+	Frame.ImageColor3 = Color3.fromRGB(25, 25, 25)
+	Frame.ScaleType = Enum.ScaleType.Slice
+	Frame.SliceCenter = Rect.new(16, 16, 240, 240)
+	Frame.Draggable = true
+	
+	yo.Name = "yo"
+	yo.Parent = Frame
+	yo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	yo.BackgroundTransparency = 1.000
+	yo.Position = UDim2.new(0.0679114684, 0, -0.00316100754, 0)
+	yo.Size = UDim2.new(0, 194, 0, 26)
+	yo.Font = Enum.Font.Roboto
+	yo.Text = "Pet Value Changer"
+	yo.TextColor3 = Color3.fromRGB(255, 255, 255)
+	yo.TextSize = 14.000
+	
+	Button.Name = "Button"
+	Button.Parent = Frame
+	Button.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	Button.BackgroundTransparency = 1.000
+	Button.Position = UDim2.new(0.893078744, 0, 0.00956761837, 0)
+	Button.Size = UDim2.new(0, 35, 0, 25)
+	Button.Image = "rbxassetid://2790389767"
+	Button.ImageColor3 = Color3.fromRGB(25, 25, 25)
+	Button.ImageTransparency = 1.000
+	Button.ScaleType = Enum.ScaleType.Slice
+	Button.SliceCenter = Rect.new(8, 8, 248, 248)
+	
+	TextLabel.Parent = Button
+	TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Position = UDim2.new(0.127242595, 0, 0.501989007, 0)
+	TextLabel.Size = UDim2.new(1.2199446, -5, 1.16371465, -5)
+	TextLabel.Font = Enum.Font.GothamSemibold
+	TextLabel.Text = "+"
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextSize = 14.000
+	
+	selectpet.Name = "selectpet"
+	selectpet.Parent = Frame
+	selectpet.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	selectpet.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	selectpet.Position = UDim2.new(0.0679115057, 0, 0.193965524, 0)
+	selectpet.Size = UDim2.new(0, 193, 0, 39)
+	selectpet.Visible = false
+	selectpet.Font = Enum.Font.Roboto
+	selectpet.Text = "Click here 2 select pet"
+	selectpet.TextColor3 = Color3.fromRGB(255, 255, 255)
+	selectpet.TextSize = 14.000
+	
+	confirm.Name = "confirm"
+	confirm.Parent = Frame
+	confirm.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	confirm.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	confirm.Position = UDim2.new(0.0679115057, 0, 0.728448272, 0)
+	confirm.Size = UDim2.new(0, 193, 0, 39)
+	confirm.Visible = false
+	confirm.Font = Enum.Font.Roboto
+	confirm.Text = "Confirm"
+	confirm.TextColor3 = Color3.fromRGB(255, 255, 255)
+	confirm.TextSize = 14.000
+	
+	petval.Name = "petval"
+	petval.Parent = Frame
+	petval.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	petval.BorderColor3 = Color3.fromRGB(20, 20, 20)
+	petval.Position = UDim2.new(0.0679115057, 0, 0.512931049, 0)
+	petval.Size = UDim2.new(0, 193, 0, 39)
+	petval.Visible = false
+	petval.ClearTextOnFocus = false
+	petval.Font = Enum.Font.Roboto
+	petval.Text = "pet value here: ex; 10B"
+	petval.TextColor3 = Color3.fromRGB(255, 255, 255)
+	petval.TextSize = 14.000
+	
+	ScrollingFrame.Parent = Frame
+	ScrollingFrame.Active = true
+	ScrollingFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+	ScrollingFrame.BorderColor3 = Color3.fromRGB(35, 35, 35)
+	ScrollingFrame.Position = UDim2.new(1.05543101, 0, 0.193965524, 0)
+	ScrollingFrame.Size = UDim2.new(0, 191, 0, 187)
+	ScrollingFrame.Visible = false
+	
+	ListLayout.Name = "ListLayout"
+	ListLayout.Parent = ScrollingFrame
+	ListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	ListLayout.Padding = UDim.new(0.00999999978, 0)
+	
+	-- Scripts:
+	
+	local function CLXF_fake_script() -- Button.LocalScript 
+		local script = Instance.new('LocalScript', Button)
+	
+		local t = script.Parent.TextLabel
+		script.Parent.MouseButton1Click:Connect(function()
+			local TweenService = game:GetService("TweenService")
+			local Frame2 = script.Parent.Parent
+		
+			if t.Text == "+" then
+				Frame2:TweenSize(
+					UDim2.new(0, 222, 0, 232),
+					"Out",
+					"Linear",
+					0.3,
+					false,
+					nil
+				)	
+				wait(0.3)
+				t.Text = "-"
+				for i,v in pairs(Frame2:GetChildren())do
+					if v.Name ~= "yo" and not v:IsA("LocalScript") and v ~= script.Parent and v.Name ~= "ScrollingFrame" then
+						v.Visible = true
+					end
+				end
+			end
+			
+		end)
+		
+		script.Parent.MouseButton1Click:Connect(function()
+			local TweenService = game:GetService("TweenService")
+			local Frame2 = script.Parent.Parent
+			if t.Text == "-" then
+				Frame2:TweenSize(
+					UDim2.new(0, 222, 0, 24),
+					"Out",
+					"Linear",
+					0.3,
+					false,
+					nil
+				)	
+				for i,v in pairs(Frame2:GetChildren())do
+					if v.Name ~= "yo" and not v:IsA("LocalScript") and v ~= script.Parent then
+						v.Visible = false
+					end
+				end
+				wait(0.3)
+				t.Text = "+"
+			end
+			
+		end)
+		
+	end
+	coroutine.wrap(CLXF_fake_script)()
+	local function DLZOPIV_fake_script() -- selectpet.LocalScript 
+		local script = Instance.new('LocalScript', selectpet)
+	
+		local lastframe = nil
+		local selected = nil
+		local ListLayout = script.Parent.Parent.ScrollingFrame.ListLayout
+		local guid = {}
+		
+		local function createButton(v)
+			if v.Name then
+				local f = Instance.new("TextButton")
+				f.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+				f.Size = UDim2.new(0, 191, 0, 29)
+				f.Font = Enum.Font.Roboto
+				f.TextColor3 = Color3.fromRGB(255, 255, 255)
+				f.TextSize = 14.000
+				f.TextStrokeColor3 = Color3.fromRGB(20, 20, 20)
+				f.Text = v.Name
+				f.AutomaticSize = "Y"
+				if lastframe == nil then
+					f.Position = UDim2.new(0, 0, 0,0)
+				else
+					f.Position = UDim2.new(lastframe.Position.X, lastframe.Position.Y + UDim.new(0.062,0))
+				end
+		
+				f.MouseButton1Click:Connect(function()
+					selected = v
+					script.Parent.Text = v.Name.." ["..v:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text.."]".."Selected"
+					script.Parent.Parent.ScrollingFrame.Visible = false
+					lastframe = nil
+					for _,v in pairs(script.Parent.Parent.ScrollingFrame:GetChildren())do
+						if v:IsA("TextButton") then
+							v:Destroy()
+						end
+					end
+					print(selected)
+				end)
+		
+				f.Parent = script.Parent.Parent.ScrollingFrame
+				lastframe = f
+			end
+		end
+		
+		script.Parent.MouseButton1Click:Connect(function()
+			if script.Parent.Parent.ScrollingFrame.Visible == false then
+				script.Parent.Parent.ScrollingFrame.Visible = true
+				lastframe = nil
+				for _,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.petsBackground.Background:FindFirstChild("background").Scroll.ScrollingFrame:GetChildren())do
+					if v:IsA("ImageButton") then
+						createButton(v)
+					end
+				end
+		
+			else
+				script.Parent.Parent.ScrollingFrame.Visible = false
+				lastframe = nil
+				for _,v in pairs(script.Parent.Parent.ScrollingFrame:GetChildren())do
+					if v:IsA("TextButton") then
+						v:Destroy()
+					end
+				end
+			end
+		
+		end)
+		
+		local p = {}
+		
+		script.Parent.Parent.confirm.MouseButton1Click:Connect(function()
+		
+			local newval = script.Parent.Parent.petval.Text
+		
+			for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.petsBackground.Background:FindFirstChild("background").Scroll.ScrollingFrame:GetChildren())do
+				if v:IsA("ImageButton") then
+					if v.Name == selected.Name then
+						v:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text = newval
+					end
+				end
+			end
+		
+			for i2,v2 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.youBG.Scroll:GetChildren())do
+				if v2:IsA("ImageButton") and v2.Name == selected.Name then
+					v2:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text = newval
+				end
+			end
+			
+			p[selected.Name] = newval
+			
+			for i2,v2 in pairs(game:GetService("Players").LocalPlayer:FindFirstChild("petOwned"):GetChildren())do
+				if v2.Name == selected.petID.Value.."" then
+					guid[selected.Name] = v2:FindFirstChild("GUID").Value
+				end
+			end
+		
+		end)
+		
+		for _,v2 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.youBG.Scroll:GetChildren())do
+			if v2:IsA("ImageButton") and p[v2.Name] and p[v2.Name] ~= nil then
+				v2:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text = p[v2.Name]
+			end
+		end
+		
+		
+		while wait()do
+			for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.tradeActiveBackground.Background.youBG.Scroll:GetChildren())do
+				if p[v.Name] and p[v.Name] ~= nil then
+					for i2,v2 in pairs(game:GetService("Players").LocalPlayer:FindFirstChild("petOwned"):GetChildren())do
+						if v2.Name == v:FindFirstChild("petID").Value.."" then
+							if guid[v.Name] and guid[v.Name] == v2:FindFirstChild("GUID").Value then
+								v:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text = p[v.Name]
+							end
+						end
+					end
+				end
+			end
+		
+			for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.framesUI.petsBackground.Background:FindFirstChild("background").Scroll.ScrollingFrame:GetChildren())do
+				if v:IsA("ImageButton") and v.Visible == true then
+					if p[v.Name] and p[v.Name] ~= nil then
+						for i2,v2 in pairs(game:GetService("Players").LocalPlayer:FindFirstChild("petOwned"):GetChildren())do
+							if v2.Name == v:FindFirstChild("petID").Value.."" then
+								if guid[v.Name] and guid[v.Name] == v2:FindFirstChild("GUID").Value then
+									v:FindFirstChild("Background"):FindFirstChild("Background").multiplier.Text = p[v.Name]
+								end
+							end
+						end
+					end
+				end
+			end
+		
+		end
+	end
+		coroutine.wrap(DLZOPIV_fake_script)()
+	end
+	
+	
